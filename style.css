@@ -1,0 +1,140 @@
+header,nav,ul,li,h1,p,a{margin:0;padding:0;}
+.headerli{
+    float:left;
+    width:20%;
+    list-style-type: none;
+    border-right: 1px solid #e6e4e4;
+	border-bottom: 1px solid #e6e4e4;
+	box-sizing: border-box;
+}
+
+.headera{
+    color:#333;
+	text-decoration: none;
+    display: block;
+	width: 100%;
+	padding: 10px 0;
+}
+
+.headera:hover {
+	background:#97defb;
+}
+
+#headernav{
+    background: #f5f5f5;
+    text-align: center;
+}
+
+.headarea{
+    clear:both;
+	padding: 20px 20px;
+	border-bottom: 1px solid #e6e4e4;
+	background:#f5f5dc;
+    font-size: 140%;
+	line-height:1.3em;
+}
+
+.bodyh1,.bodyh2{
+	margin: 2%;
+}
+
+.checkbox,.bodyp{
+	margin-left: 2%;
+}
+
+.bodyli{
+    float:left;
+	margin-left:2%;
+	margin-right:2%;
+    width:90%;
+    list-style-type: none;
+    border-right: 1px solid #e6e4e4;
+	border-bottom: 1px solid #e6e4e4;
+	box-sizing: border-box;
+	border-bottom: 1px solid #e6e4e4;
+	background:#f5f5dc;
+}
+
+.bodyli2{
+    float:left;
+	margin-left:2%;
+	margin-right:2%;
+    width:90%;
+    list-style-type: none;
+}
+
+.menuli{
+    float:left;
+	margin-left:2%;
+	margin-right:2%;
+	margin-bottom: 2%;
+    width:46%;
+    list-style-type: none;
+    border-right: 1px solid #e6e4e4;
+	border-bottom: 1px solid #e6e4e4;
+	box-sizing: border-box;
+	border-bottom: 1px solid #e6e4e4;
+	background:#f5f5dc;
+}
+
+.bodya{
+    clear:both;
+    display: block;
+	padding: 10px 20px;
+    font-size: 140%;
+	line-height:1.3em;
+}
+
+.headarea p{
+	font-size: 18px;
+	padding-left:5px;
+}
+
+.movie{
+	margin-left:2%;
+}
+
+a{
+    text-decoration: none;
+}
+
+body {
+	font-family:Verdana,"ヒラギノ角ゴ Pro W3","メイリオ";
+	color:#333;
+	margin:0;
+	padding:0;
+}
+
+#table{
+    margin:0;
+    width:100%;
+}
+
+#td1{
+	width:80%;
+	background:#f5f5dc;
+}
+
+#td2{
+	width:20%;
+	background:#f5f5dc;
+}
+
+.menuimg{
+	padding-left: 5%;
+	padding-top: -1%;
+	padding-bottom: 3%;
+	width:90%;
+}
+
+.linkimg{
+	padding: 0%;
+	width:90%;
+}
+
+img{
+	padding-left: 2%;
+	padding-top: -1%;
+	padding-bottom: 3%;
+	width:40%;
+}

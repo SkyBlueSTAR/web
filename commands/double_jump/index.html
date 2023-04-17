@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css">
+    <title>SkyBlueのSTAR</title>
+</head>
+<header>
+    <nav id="headernav">
+        <ul>
+            <li class="headerli"><a href="../../index.html" class="headera">home</a></li>
+            <li class="headerli"><a href="../../addons/index.html" class="headera">addons</a></li>
+            <li class="headerli"><a href="../../tools/index.html" class="headera">tools</a></li>
+            <li class="headerli"><a href="../index.html" class="headera">commands</a></li>
+            <li class="headerli"><a href="#" class="headera"></a></li>
+        </ul>
+    </nav>
+    <div class="headarea">
+		<h1>STARのぺーじ</h1>
+		<p>わたしが作った便利ツールとかアドオンとかのまとめサイト</p>
+	</div>
+</header>
+<body>
+    <h1 class="bodyh1">多段ジャンプ</h1>
+    <img src="../../img/double_jump.png">
+    <h2 class="bodyh2">説明動画</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/ZD9dwylEUMA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="movie"></iframe>
+    <h2 class="bodyh2">コマンドコピー用</h2>
+    <input type="checkbox" id="check" checked value="showexplain" class="checkbox">
+    <label for="check">説明文を表示する</label>
+    <nav>
+        <ul>
+            <li class="bodyli2">通常のジャンプの強化。2の部分を変えることで一段目のジャンプの強さを変えられる</li>
+            <li class="bodyli">
+                effect @a[hasitem={item=elytra,location=slot.armor.chest}] jump_boost 1 2 true
+            </li>
+            <li class="bodyli2">エリトラを装備しているプレイヤーが地面についていたら空中でのジャンプの残り回数をリセット。ここの2が空中で飛べる回数になるので別の数に変えると飛べる回数が増える</li>
+            <li class="bodyli">
+                execute as @a[hasitem={item=elytra,location=slot.armor.chest}] at @s unless block ~~-0.1~ air run scoreboard players set @s double_jump 2
+            </li>
+            <li class="bodyli2">浮遊エフェクトを1秒未満にするために浮遊エフェクトの削除を行う</li>
+            <li class="bodyli">
+                effect @a[scores={db_jump=0}] levitation 0 255 true
+            </li>
+            <li class="bodyli2">浮遊の残り時間用タイマー</li>
+            <li class="bodyli">
+                scoreboard players remove @a db_jump 1
+            </li>
+            <li class="bodyli2">エリトラ検知のコマンド。当たり判定が減っているかつ水中でない(水中だと泳ぎでも当たり判定が減るから)かつ多段ジャンプの回数が残っているときに浮遊用のタイマーのスコアを付与。ここの数字を変えれば浮遊効果の時間が変わるのでここで空中ジャンプの強さを変えることもできるが、ここで調整するのはあまりおすすめできない</li>
+            <li class="bodyli">
+                execute as @a at @s unless entity @s[y=~1,dx=0] unless block ~ ~ ~ water if block ~~-0.1~ air run scoreboard players set @s[scores={double_jump=1..}] db_jump 3
+            </li>
+            <li class="bodyli2">浮遊タイマーが残っている間浮遊を付与。25の所が強さなのでここを弄れば空中ジャンプの強さが変わる</li>
+            <li class="bodyli">
+                effect @a[scores={db_jump=1..}] levitation 1 25 true
+            </li>
+            <li class="bodyli2">ここからエリトラの強制解除機構。まずアドベンチャー→スペクテイターとスペクテイター→アドベンチャーを行い、それをクリエイティブ、サバイバルと順番に行うことで元のゲームモードに確実に戻せる</li>
+            <li class="bodyli">
+                gamemode spectator @a[m=a,scores={db_jump=3}]<br>
+                gamemode a @a[m=spectator,scores={db_jump=3}]<br>
+                gamemode spectator @a[m=c,scores={db_jump=3}]<br>
+                gamemode c @a[m=spectator,scores={db_jump=3}]<br>
+                gamemode spectator @a[m=s,scores={db_jump=3}]<br>
+                gamemode s @a[m=spectator,scores={db_jump=3}]<br>
+            </li>
+            <li class="bodyli2">ここまでエリトラ強制解除機構</li>
+            <li class="bodyli2">空中ジャンプを行ったときに残り回数を減らす</li>
+            <li class="bodyli">
+                scoreboard players remove @a[scores={db_jump=3}] double_jump 1
+            </li>
+        </ul>
+    </nav>
+    <script src="./index.js"></script>
+</body>
+</html>

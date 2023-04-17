@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css">
+    <title>SkyBlueのSTAR</title>
+</head>
+<header>
+    <nav id="headernav">
+        <ul>
+            <li class="headerli"><a href="../../index.html" class="headera">home</a></li>
+            <li class="headerli"><a href="../../addons/index.html" class="headera">addons</a></li>
+            <li class="headerli"><a href="../../tools/index.html" class="headera">tools</a></li>
+            <li class="headerli"><a href="../index.html" class="headera">commands</a></li>
+            <li class="headerli"><a href="#" class="headera"></a></li>
+        </ul>
+    </nav>
+    <div class="headarea">
+		<h1>STARのぺーじ</h1>
+		<p>わたしが作った便利ツールとかアドオンとかのまとめサイト</p>
+	</div>
+</header>
+<body>
+    <h1 class="bodyh1">氷結魔法</h1>
+    <img src="../../img/ice_magic.png">
+    <h2 class="bodyh2">説明動画</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/JpAZyjbQE7M" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="movie"></iframe>
+    <h2 class="bodyh2">コマンドコピー用</h2>
+    <nav>
+        <ul>
+            <li class="bodyli2">コマンド群1</li>
+            <li class="bodyli">
+                scoreboard objectives add PlayerID dummy<br>
+                scoreboard objectives add shift dummy<br>
+                scoreboard objectives add ice dummy<br>
+                scoreboard objectives add ice_shot dummy<br>
+            </li>
+            <li class="bodyli2">コマンド群2</li>
+            <li class="bodyli">
+                execute as @r[tag=!login] run scoreboard players add p PlayerID 1<br>
+                execute as @r[tag=!login] run scoreboard players operation @s PlayerID = p PlayerID<br>
+                tag @a[tag=!login,scores={PlayerID=0..}] add login<br>
+                scoreboard players add @e PlayerID 0<br>
+            </li>
+            <li class="bodyli2">コマンド群3</li>
+            <li class="bodyli">
+                execute as @a[hasitem={item=packed_ice,location=slot.weapon.mainhand}] at @s positioned ^^^10 run summon parrot ~~1000~ minecraft:on_tame shiftcheck<br>
+                execute as @a[hasitem={item=packed_ice,location=slot.weapon.mainhand}] at @s positioned ~~1000~ positioned ^^^100 run scoreboard players operation @e[name=shiftcheck,type=parrot,c=1] shift = @s PlayerID<br>
+                execute as @a[hasitem={item=packed_ice,location=slot.weapon.mainhand}] at @e[type=parrot,name=shiftcheck] if score @s PlayerID = @e[type=parrot,name=shiftcheck,c=1] shift run ride @e[type=parrot,name=shiftcheck,c=1] start_riding @s teleport_rider<br>
+                execute as @e[type=parrot,name=shiftcheck] at @s run tp @s 0 ~ 0<br>
+                execute as @e[type=parrot,name=shiftcheck] at @a[hasitem={item=packed_ice,location=slot.weapon.mainhand}] if score @s shift = @p PlayerID positioned 0 ~1.22 0 if entity @s[r=0.1] run execute as @s at @a[hasitem={item=packed_ice,location=slot.weapon.mainhand}] if score @s shift = @p PlayerID run scoreboard players add @p shift 1<br>
+                execute as @e[type=parrot,name=shiftcheck] at @a[hasitem={item=packed_ice,location=slot.weapon.mainhand}] if score @s shift = @p PlayerID positioned 0 ~1.22 0 if entity @s[rm=0.1] run execute as @s at @a[hasitem={item=packed_ice,location=slot.weapon.mainhand}] if score @s shift = @p PlayerID run scoreboard players set @p shift 0<br>
+                tp @e[type=parrot,name=shiftcheck] ~~-1000000~<br>
+                kill @e[type=minecraft:parrot,name=shiftcheck]<br>
+                execute as @e[c=2] as @e[c=2] as @e[c=2] at @a[scores={shift=1}] run summon armor_stand ice_shot ~~~<br>
+                scoreboard players add @e[type=armor_stand,name=ice_shot] ice_shot 1<br>
+                execute as @e[type=armor_stand,name=ice_shot,scores={ice_shot=1},c=8] at @e[type=armor_stand,name=ice_shot,scores={ice_shot=1},rym=0,ry=0,c=8] at @s run tp ~ ~ ~ ~44.99999<br>
+                execute as @e[type=armor_stand,name=ice_shot,scores={ice_shot=1}] at @s run scoreboard players operation @s PlayerID = @p PlayerID<br>
+                execute as @e[type=armor_stand,name=ice_shot] at @s run execute positioned as @e[family=!inanimate,family=!item,c=1] unless score @s PlayerID = @e[c=1] PlayerID positioned ^10000^^ if entity @s[r=10000] at @s run tp @s ~~~~-10<br>
+                execute as @e[type=armor_stand,name=ice_shot] at @s run execute positioned as @e[family=!inanimate,family=!item,c=1] unless score @s PlayerID = @e[c=1] PlayerID positioned ^-10000^^ if entity @s[r=10000] at @s run tp @s ~~~~10<br>
+                execute as @e[type=armor_stand,name=ice_shot] at @s run execute positioned as @e[family=!inanimate,family=!item,c=1] unless score @s PlayerID = @e[c=1] PlayerID positioned ^^10000^ if entity @s[r=10000] at @s run tp @s[rx=0] ~~~~~-20<br>
+                execute as @e[type=armor_stand,name=ice_shot] at @s run execute positioned as @e[family=!inanimate,family=!item,c=1] unless score @s PlayerID = @e[c=1] PlayerID positioned ^^-10000^ if entity @s[r=10000] at @s run tp @s[rxm=0] ~~~~~20<br>
+                execute as @e[type=armor_stand,name=ice_shot] at @s run tp @s ^^^-0.5<br>
+                replaceitem entity @e[type=armor_stand,name=ice_shot] slot.weapon.mainhand 0 packed_ice<br>
+                playanimation @e[type=armor_stand,name=ice_shot] animation.armor_stand.athena_pose none 100<br>
+                effect @e[type=armor_stand,name=ice_shot] invisibility 1 1 true<br>
+                execute at @e[type=armor_stand,name=ice_shot] positioned ~~1~ as @e[r=2] unless score @e[c=1] PlayerID = @s PlayerID run scoreboard players add @e[c=1] ice_shot 200<br>
+                execute at @e[type=armor_stand,name=ice_shot] positioned ~~1~ as @e[r=2] unless score @e[c=1] PlayerID = @s PlayerID run damage @s 7 freezing<br>
+                tp @e[type=armor_stand,name=ice_shot,scores={ice_shot=100..}] ~~-100000~<br>
+                execute at @e[type=armor_stand,name=ice_shot] run setblock ~~~ packed_ice 0 keep<br>
+                execute at @e[type=armor_stand,name=ice_shot] if block ~~~ packed_ice -1 run setblock ~~~ air 0 destroy<br>
+                execute at @e[type=armor_stand,name=ice_shot] if block ~~~ air -1 run kill @e[type=item,name=氷塊,c=1]<br>
+            </li>
+            <li class="bodyli2">コマンド群4</li>
+            <li class="bodyli">
+                execute at @a[hasitem={item=packed_ice,location=slot.weapon.mainhand}] run summon armor_stand ice ~~-2~<br>
+                scoreboard players add @e[type=armor_stand,name=ice] ice 1<br>
+                execute at @e[type=armor_stand,name=ice,scores={ice=20..}] run fill ~-1~~-1~1~1~1 air 0 replace packed_ice<br>
+                execute at @e[type=armor_stand,name=ice,scores={ice=..19}] run fill ~-1~~-1~1~1~1 packed_ice 0 keep<br>
+                execute as @e[type=armor_stand,name=ice,scores={ice=..19}] at @s run tp @s ~~~<br>
+                effect @e[type=armor_stand,name=ice] invisibility 1 1 true<br>
+                tp @e[type=armor_stand,name=ice,scores={ice=20..}] ~~-100000~<br>
+            </li>
+            <li class="bodyli2">コマンド群5</li>
+            <li class="bodyli">
+                execute as @e[type=item,name=氷塊] at @s positioned ~~-1~ run give @p packed_ice<br>
+                execute as @e[c=2] as @e[c=2] as @e[c=2] as @e[c=2] as @e[c=2] as @e[c=2] as @e[c=2] as @e[c=2] as @e[c=2] as @e[c=2] as @e[type=item,name=氷塊] at @s run tp @s ^^^1 true<br>
+                execute as @e[type=item,name=氷塊] at @s if block ^^^1 air -1 run kill @s<br>
+                execute at @e[type=item,name=氷塊] run summon armor_stand ice_prison ~~~<br>
+                scoreboard players add @e[type=armor_stand,name=ice_prison] ice 1<br>
+                execute at @e[type=armor_stand,name=ice_prison] run fill ~-2~-1~-2~2~3~2 packed_ice 0 keep<br>
+                execute at @e[type=armor_stand,name=ice_prison,scores={ice=100..}] run fill ~-2~-1~-2~2~3~2 air 0 replace packed_ice<br>
+                kill @e[type=item,name=氷塊]<br>
+                kill @e[type=armor_stand,name=ice_prison,scores={ice=100..}]<br>
+                effect @e[type=armor_stand,name=ice_prison] invisibility 1 1 true<br>
+                execute as @e[type=armor_stand,name=ice_prison] at @s run tp @s ~~~<br>
+            </li>
+        </ul>
+    </nav>
+</body>
+</html>

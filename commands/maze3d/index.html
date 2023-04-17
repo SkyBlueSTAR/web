@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../style.css">
+    <title>SkyBlueのSTAR</title>
+</head>
+<header>
+    <nav id="headernav">
+        <ul>
+            <li class="headerli"><a href="../../index.html" class="headera">home</a></li>
+            <li class="headerli"><a href="../../addons/index.html" class="headera">addons</a></li>
+            <li class="headerli"><a href="../../tools/index.html" class="headera">tools</a></li>
+            <li class="headerli"><a href="../index.html" class="headera">commands</a></li>
+            <li class="headerli"><a href="#" class="headera"></a></li>
+        </ul>
+    </nav>
+    <div class="headarea">
+		<h1>STARのぺーじ</h1>
+		<p>わたしが作った便利ツールとかアドオンとかのまとめサイト</p>
+	</div>
+</header>
+<body>
+    <h1 class="bodyh1">立体迷路</h1>
+    <img src="../../img/maze_3d.png">
+    <h2 class="bodyh2">説明動画</h2>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/kQrjgM8pLDo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen class="movie"></iframe>
+    <h2 class="bodyh2">コマンドコピー用(新execute対応)</h2>
+    <nav>
+        <ul>
+            <li class="bodyli2">スコアボード準備(1回のみ実行)</li>
+            <li class="bodyli">
+                scoreboard objectives add meiro dummy<br>
+            </li>
+            <li class="bodyli2">本体</li>
+            <li class="bodyli">
+                scoreboard players random @e[name=meiro] meiro 1 10<br>
+                execute as @e[name=meiro,scores={meiro=1..2}] at @s run tp @s ~~~ 0<br>
+                execute as @e[name=meiro,scores={meiro=3..4}] at @s run tp @s ~~~ 90<br>
+                execute as @e[name=meiro,scores={meiro=5..6}] at @s run tp @s ~~~ 180<br>
+                execute as @e[name=meiro,scores={meiro=7..8}] at @s run tp @s ~~~ 270<br>
+                execute as @e[name=meiro,scores={meiro=1..8}] at @s if block ^^^4 stone run fill ^-1^^-1 ^1^2^5 light_block ["block_light_level":15] replace stone<br>
+                execute as @e[name=meiro,scores={meiro=9}] at @s if block ~~4~ stone run fill ~~~ ~~3~ scaffolding<br>
+                execute as @e[name=meiro,scores={meiro=9}] at @s if block ~~4~ stone run fill ~-1~4~-1 ~1~6~1 light_block ["block_light_level":15]<br>
+                execute as @e[name=meiro,scores={meiro=10}] at @s if block ~~-2~ stone run fill ~~-4~ ~~-1~ scaffolding<br>
+                execute as @e[name=meiro,scores={meiro=10}] at @s if block ~~-3~ scaffolding run fill ~-1~-4~-1 ~1~-2~1 light_block ["block_light_level":15] replace stone<br>
+                execute as @e[name=meiro,scores={meiro=1..8}] at @s if block ^^^2 light_block run tp @s ^^^4<br>
+                execute as @e[name=meiro,scores={meiro=9}] at @s if block ~~3~ scaffolding run tp @s ~~4~<br>
+                execute as @e[name=meiro,scores={meiro=10}] at @s if block ~~-1~ scaffolding run tp @s ~~-4~<br>
+            </li>
+        </ul>
+    </nav>
+</body>
+</html>

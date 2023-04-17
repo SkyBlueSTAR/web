@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>SkyBlueのSTAR</title>
+</head>
+<header>
+    <nav id="headernav">
+        <ul>
+            <li class="headerli"><a href="../index.html" class="headera">home</a></li>
+            <li class="headerli"><a href="../addons/index.html" class="headera">addons</a></li>
+            <li class="headerli"><a href="./index.html" class="headera">tools</a></li>
+            <li class="headerli"><a href="../commands/index.html" class="headera">commadns</a></li>
+            <li class="headerli"><a href="../index.html" class="headera">knowledges</a></li>
+        </ul>
+    </nav>
+    <div class="headarea">
+		<h1>STARのぺーじ</h1>
+		<p>わたしが作った便利ツールとかアドオンとかのまとめサイト</p>
+	</div>
+</header>
+<body>
+    <h1 class="bodyh1">コマンド構文一覧</h1>
+    <p class="bodyp">見方:
+        <br>  [XXX:YYY]→XXXが指定する引数の説明、YYYが指定する型(以下の型に当てはまらないような引数はYYYを書いていません)
+        <br>  型一覧
+        <br>    string:文字列(minecraft:creeperなど)
+        <br>    int:数値(1,23,-1など)
+        <br>    bool:真偽値(trueまたはfalse)
+        <br>    selector:セレクター(@a,@e[type=zombie]など)
+        <br>  {AAA,BBB}→AAAとBBBのどちらを指定してもよい
+    </p>
+    <nav>
+        <ul>
+            <li class="bodyli">
+                <h2>/?</h2>
+                コマンドのヘルプを表示します。/helpと同義。
+                <br>構文:/? {[調べたいコマンド名:string],[helpのページ:int]}
+            </li>
+            <li class="bodyli">
+                <h2>/ability</h2>
+                プレイヤーに対して能力を付与/剥奪する。
+                <br>能力一覧:
+                <br>  worldbuilder:ブロックの設置および破壊(trueで設置可能)
+                <br>  mayfly:飛行(trueで飛行可能)
+                <br>  mute:チャットメッセージの送信(trueで送信不可)
+                <br>構文:/ability [付与/剥奪したいプレイヤー名:bool] [能力名:string] [付与/剥奪:bool]
+            </li>
+        </ul>
+    </nav>
+</body>
+</html>
